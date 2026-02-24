@@ -1,33 +1,35 @@
 /**
  * =========================================================
- * MAIN CLASS - UseCase5PalindromeCheckerApp
+ * MAIN CLASS - UseCase6PalindromeCheckerApp
  * =========================================================
  *
- * Use Case 5: Stack-Based Palindrome Checker
+ * Use Case 6: Queue + Stack Based Palindrome Check
  *
  * Description:
  * This class checks whether a string is a palindrome
- * using a Stack data structure. Characters are pushed
- * into the stack and popped to compare in reverse order.
+ * using both Queue (FIFO) and Stack (LIFO).
  *
  * At this stage, the application:
- * - Pushes characters into stack
- * - Pops characters for comparison
+ * - Enqueues characters into a queue
+ * - Pushes characters into a stack
+ * - Compares dequeue (queue) with pop (stack)
  * - Displays the validation result
  *
- * Data Structure: Stack
+ * Data Structures: Queue, Stack
  *
  * @author Srishti Singh
- * @version 5.0
+ * @version 6.0
  */
 
 import java.util.Scanner;
+import java.util.Queue;
+import java.util.LinkedList;
 import java.util.Stack;
 
-public class UC5 {
+public class UC6 {
 
     /**
-     * Application entry point for UC5.
+     * Application entry point for UC6.
      *
      * @param args Command-line arguments
      */
@@ -38,18 +40,21 @@ public class UC5 {
         System.out.print("Enter a string: ");
         String input = scanner.nextLine();
 
+        Queue<Character> queue = new LinkedList<>();
         Stack<Character> stack = new Stack<>();
 
-        // Push characters into stack
+        // Enqueue and Push characters
         for (int i = 0; i < input.length(); i++) {
-            stack.push(input.charAt(i));
+            char ch = input.charAt(i);
+            queue.add(ch);     // Enqueue (FIFO)
+            stack.push(ch);    // Push (LIFO)
         }
 
         boolean isPalindrome = true;
 
-        // Pop characters and compare
-        for (int i = 0; i < input.length(); i++) {
-            if (input.charAt(i) != stack.pop()) {
+        // Compare dequeue vs pop
+        while (!queue.isEmpty()) {
+            if (queue.remove() != stack.pop()) {
                 isPalindrome = false;
                 break;
             }
