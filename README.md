@@ -27,11 +27,22 @@ Checks whether a predefined string is a palindrome.
 
 ---
 
-## 🛠 Technologies Used
-- Java
-- IntelliJ IDEA
-- Git & GitHub
+## ✅ UC5 – Advanced Palindrome Check
 
----
+Checks whether a string is a palindrome while:
+
+- Ignoring uppercase/lowercase differences
+- Ignoring spaces
+- Ignoring special characters
+
+Example:
+Input: "A man a plan a canal Panama"
+Output: Palindrome
+
+Concepts Used:
+- String methods (replaceAll, toLowerCase)
+- Regular expressions
+- String processing
+- Efficient comparison
 
 
