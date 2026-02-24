@@ -2,7 +2,7 @@ public class UC2 {
 
     public static void main(String[] args) {
 
-        String word = "madam";   // Hardcoded string
+        String word = "level";   // Hardcoded string
         String reversed = "";
 
         // Reverse the string
