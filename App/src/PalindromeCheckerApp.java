@@ -1,65 +1,36 @@
 
 import java.util.Scanner;
 
-public class UC12 {
+public class UC13 {
 
-    // Strategy Interface
-    interface PalindromeStrategy {
-        boolean isPalindrome(String str);
-    }
+    // Iterative Method
+    public static boolean iterativePalindrome(String str) {
 
-    // Iterative Strategy
-    static class IterativeStrategy implements PalindromeStrategy {
+        str = str.replaceAll("\\s+", "").toLowerCase();
+        int left = 0;
+        int right = str.length() - 1;
 
-        public boolean isPalindrome(String str) {
-
-            str = str.replaceAll("\\s+", "").toLowerCase();
-            int left = 0, right = str.length() - 1;
-
-            while (left < right) {
-                if (str.charAt(left) != str.charAt(right))
-                    return false;
-                left++;
-                right--;
-            }
-            return true;
-        }
-    }
-
-    // Recursive Strategy
-    static class RecursiveStrategy implements PalindromeStrategy {
-
-        private boolean check(String str, int start, int end) {
-            if (start >= end)
-                return true;
-
-            if (str.charAt(start) != str.charAt(end))
+        while (left < right) {
+            if (str.charAt(left) != str.charAt(right))
                 return false;
-
-            return check(str, start + 1, end - 1);
+            left++;
+            right--;
         }
-
-        public boolean isPalindrome(String str) {
-            str = str.replaceAll("\\s+", "").toLowerCase();
-            return check(str, 0, str.length() - 1);
-        }
+        return true;
     }
 
-    // Context Class
-    static class PalindromeContext {
+    // Recursive Method
+    public static boolean recursivePalindrome(String str, int start, int end) {
 
-        private PalindromeStrategy strategy;
+        if (start >= end)
+            return true;
 
-        public PalindromeContext(PalindromeStrategy strategy) {
-            this.strategy = strategy;
-        }
+        if (str.charAt(start) != str.charAt(end))
+            return false;
 
-        public boolean execute(String str) {
-            return strategy.isPalindrome(str);
-        }
+        return recursivePalindrome(str, start + 1, end - 1);
     }
 
-    // Main method
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
@@ -67,16 +38,23 @@ public class UC12 {
         System.out.print("Enter a string: ");
         String input = sc.nextLine();
 
-        // Choose strategy (change if needed)
-        PalindromeStrategy strategy = new IterativeStrategy();
-        // PalindromeStrategy strategy = new RecursiveStrategy();
+        String processed = input.replaceAll("\\s+", "").toLowerCase();
 
-        PalindromeContext context = new PalindromeContext(strategy);
+        // Measure Iterative Time
+        long startIter = System.nanoTime();
+        boolean iterResult = iterativePalindrome(input);
+        long endIter = System.nanoTime();
 
-        if (context.execute(input))
-            System.out.println("The string is a Palindrome.");
-        else
-            System.out.println("The string is NOT a Palindrome.");
+        // Measure Recursive Time
+        long startRec = System.nanoTime();
+        boolean recResult = recursivePalindrome(processed, 0, processed.length() - 1);
+        long endRec = System.nanoTime();
+
+        System.out.println("\nIterative Result: " + iterResult);
+        System.out.println("Iterative Time: " + (endIter - startIter) + " ns");
+
+        System.out.println("\nRecursive Result: " + recResult);
+        System.out.println("Recursive Time: " + (endRec - startRec) + " ns");
 
         sc.close();
     }
