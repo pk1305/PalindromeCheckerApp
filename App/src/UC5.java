@@ -1,3 +1,7 @@
+package PACKAGE_NAME;
+
+public class UC5 {
+=======
 /**
  * =========================================================
  * MAIN CLASS - UseCase5PalindromeCheckerApp
@@ -64,4 +68,5 @@ public class UC5 {
 
         scanner.close();
     }
+
 }

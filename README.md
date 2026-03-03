@@ -27,6 +27,9 @@ Checks whether a predefined string is a palindrome.
 
 ---
 
+##  ✅ UC6 –IMPLEMENTATION using stack and queue
+-implemented UC6 using stack and queue.
+=======
 ## ✅ UC5 – Advanced Palindrome Check
 
 Checks whether a string is a palindrome while:
