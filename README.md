@@ -27,11 +27,7 @@ Checks whether a predefined string is a palindrome.
 
 ---
 
-## 🛠 Technologies Used
-- Java
-- IntelliJ IDEA
-- Git & GitHub
-
----
+##  ✅ UC6 –IMPLEMENTATION using stack and queue
+-implemented UC6 using stack and queue.
 
 
