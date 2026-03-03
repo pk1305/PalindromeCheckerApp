@@ -27,6 +27,7 @@ Checks whether a predefined string is a palindrome.
 
 ---
 
+
 ## 🛠 Technologies Used
 - Java
 - IntelliJ IDEA
@@ -34,4 +35,27 @@ Checks whether a predefined string is a palindrome.
 
 ---
 UC 5 
+=======
+##  ✅ UC6 –IMPLEMENTATION using stack and queue
+-implemented UC6 using stack and queue.
+=======
+## ✅ UC5 – Advanced Palindrome Check
+
+Checks whether a string is a palindrome while:
+
+- Ignoring uppercase/lowercase differences
+- Ignoring spaces
+- Ignoring special characters
+
+Example:
+Input: "A man a plan a canal Panama"
+Output: Palindrome
+
+Concepts Used:
+- String methods (replaceAll, toLowerCase)
+- Regular expressions
+- String processing
+- Efficient comparison
+
+ main
 
