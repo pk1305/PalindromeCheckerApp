@@ -1,29 +1,29 @@
 
-import java.util.LinkedList;
 import java.util.Scanner;
 
-public class UC8 {
+public class UC10 {
 
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-        LinkedList<Character> list = new LinkedList<>();
 
         System.out.print("Enter a string: ");
-        String str = sc.nextLine().toLowerCase();
+        String str = sc.nextLine();
 
-        // Add characters to linked list
-        for (char ch : str.toCharArray()) {
-            list.add(ch);
-        }
+        // Remove spaces and convert to lowercase
+        str = str.replaceAll("\\s+", "").toLowerCase();
 
         boolean isPalindrome = true;
+        int left = 0;
+        int right = str.length() - 1;
 
-        while (list.size() > 1) {
-            if (!list.removeFirst().equals(list.removeLast())) {
+        while (left < right) {
+            if (str.charAt(left) != str.charAt(right)) {
                 isPalindrome = false;
                 break;
             }
+            left++;
+            right--;
         }
 
         if (isPalindrome)
