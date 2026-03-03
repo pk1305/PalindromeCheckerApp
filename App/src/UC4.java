@@ -1,37 +1,33 @@
-package PACKAGE_NAME;
-
-public class UC5 {
-=======
 /**
  * =========================================================
- * MAIN CLASS - UseCase5PalindromeCheckerApp
+ * MAIN CLASS - UseCase4PalindromeCheckerApp
  * =========================================================
  *
- * Use Case 5: Stack-Based Palindrome Checker
+ * Use Case 4: Character Array Based Palindrome Check
  *
  * Description:
  * This class checks whether a string is a palindrome
- * using a Stack data structure. Characters are pushed
- * into the stack and popped to compare in reverse order.
+ * by converting it into a character array and using
+ * the two-pointer technique.
  *
  * At this stage, the application:
- * - Pushes characters into stack
- * - Pops characters for comparison
+ * - Converts string to char[]
+ * - Uses two-pointer approach
+ * - Compares start & end characters
  * - Displays the validation result
  *
- * Data Structure: Stack
+ * Data Structure: char[]
  *
- * @author Srishti Singh
- * @version 5.0
+ * @author Srishti singh
+ * @version 4.0
  */
 
 import java.util.Scanner;
-import java.util.Stack;
 
-public class UC5 {
+public class UC4 {
 
     /**
-     * Application entry point for UC5.
+     * Application entry point for UC4.
      *
      * @param args Command-line arguments
      */
@@ -42,21 +38,22 @@ public class UC5 {
         System.out.print("Enter a string: ");
         String input = scanner.nextLine();
 
-        Stack<Character> stack = new Stack<>();
+        // Convert string to character array
+        char[] characters = input.toCharArray();
 
-        // Push characters into stack
-        for (int i = 0; i < input.length(); i++) {
-            stack.push(input.charAt(i));
-        }
+        int left = 0;
+        int right = characters.length - 1;
 
         boolean isPalindrome = true;
 
-        // Pop characters and compare
-        for (int i = 0; i < input.length(); i++) {
-            if (input.charAt(i) != stack.pop()) {
+        // Two-pointer comparison
+        while (left < right) {
+            if (characters[left] != characters[right]) {
                 isPalindrome = false;
                 break;
             }
+            left++;
+            right--;
         }
 
         // Display result
@@ -68,5 +65,4 @@ public class UC5 {
 
         scanner.close();
     }
-
 }
